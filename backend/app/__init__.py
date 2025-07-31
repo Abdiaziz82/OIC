@@ -15,7 +15,7 @@ def create_app():
     # Config 
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///site.db')
 
-    app.secret_key = os.getenv('SECTRET_KEY')
+    app.secret_key = os.getenv('SECRET_KEY')
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config.update({
