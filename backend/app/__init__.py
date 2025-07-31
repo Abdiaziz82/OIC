@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from flask_migrate import Migrate
 from datetime import timedelta
+import os
 db = SQLAlchemy()
 
 
@@ -12,9 +13,9 @@ def create_app():
     app = Flask(__name__ , static_folder='../../frontend/dist' ,static_url_path='/')
 
     # Config 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///site.db')
 
-    app.secret_key = "GGHYt7TT564282929"
+    app.secret_key = os.getenv('SECTRET_KEY')
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config.update({
